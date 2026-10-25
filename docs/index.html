@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KITE: Knowledge guided neural network with design code models and laboratory reference transfer for predicting long term creep and shrinkage of concrete from short term tests</title>
+<meta name="description" content="KITE predicts the long term shrinkage or creep curve of a new concrete mixture from a test of 7 to 28 days, with the curves of a control mixture, design code experts and a cross fitted tabular foundation model.">
+<meta name="author" content="Tadesse G. Wakjira, Hana L. Goshu">
+<meta name="keywords" content="concrete creep, shrinkage, short term tests, attention mechanism, tabular foundation model, transfer learning, design code models, AI4RISE Lab">
+<link rel="canonical" href="https://twakjira.github.io/KITE/">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="KITE: Knowledge guided neural network with design code models and laboratory reference transfer for predicting long term creep and shrinkage of concrete from short term tests">
+<meta property="og:description" content="KITE predicts the long term shrinkage or creep curve of a new concrete mixture from a test of 7 to 28 days, with the curves of a control mixture, design code experts and a cross fitted tabular foundation model.">
+<meta property="og:url" content="https://twakjira.github.io/KITE/">
+<meta property="og:image" content="https://twakjira.github.io/KITE/assets/fig03_framework.jpg">
+<meta property="og:site_name" content="KITE">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KITE for long term shrinkage and creep of concrete">
+<meta name="twitter:description" content="In source transfer from a control mixture and an evidence gate over design code experts and a cross fitted foundation model.">
+<meta name="twitter:image" content="https://twakjira.github.io/KITE/assets/fig03_framework.jpg">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js" defer></script>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <span class="topnav-brand"><span>KITE</span></span>
+    <a class="navlink" href="#abstract">Abstract</a>
+    <a class="navlink" href="#method">Method</a>
+    <a class="navlink" href="#results">Results</a>
+    <a class="navlink" href="#explore">Explore</a>
+    <a class="navlink" href="#code">Code</a>
+    <a class="navlink" href="#citation">Citation</a>
+  </div>
+</nav>
+
+<div class="section title-section fadein">
+  <h1 class="project-title">
+    <span class="accent">KITE</span>: Knowledge guided neural network with design code models and laboratory reference transfer for predicting long term creep and shrinkage of concrete from short term tests
+  </h1>
+  <div class="authors">
+    <a href="https://www.ai4riselab.com" target="_blank" rel="noopener">Tadesse G. Wakjira</a><sup>1</sup>,
+    <a href="https://hanagoshu.com" target="_blank" rel="noopener">Hana L. Goshu</a><sup>2</sup>
+  </div>
+  <div class="affiliations">
+    <span><sup>1</sup>Kennesaw State University</span>
+    <span><sup>2</sup>The Hong Kong Polytechnic University</span>
+  </div>
+  <div class="buttons-row">
+    <a class="pill pill-paper pill-disabled" href="#" onclick="return false;"><svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Paper</a>
+    <a class="pill pill-method" href="#method"><svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2.5 2.5"/></svg>Method</a>
+    <a class="pill pill-method" href="#explore"><svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l5-5 4 4 3-3 6 6"/></svg>Explore</a>
+    <a class="pill pill-code" href="https://github.com/twakjira/KITE" target="_blank" rel="noopener noreferrer"><svg class="pill-icon" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+    <a class="pill pill-data" href="https://doi.org/10.5281/zenodo.8150177" target="_blank" rel="noopener noreferrer"><svg class="pill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>Data</a>
+  </div>
+</div>
+
+<div class="section reveal" id="abstract">
+  <h2>Abstract</h2>
+  <p>Qualifying a new low carbon concrete for long term deformation takes tests of months to years, and design code updating from a few weeks of data leaves large errors. KITE, a knowledge guided neural network, predicts the complete shrinkage or creep curve from the first 7 to 28 days of a test. An in source transfer module attends over the curves of a control mixture of the same program. An interpretable evidence gate weights the transferred trajectory against design code experts, an analog expert and a cross fitted tabular foundation model at every horizon, and conformal intervals quantify the uncertainty.</p>
+</div>
+
+<div class="section wide reveal">
+  <div class="metric-row">
+    <div class="metric-card primary"><div class="label">Relative RMSE on 196 laboratory units</div><div class="value">0.147<span class="unit">12.2% below the strongest baseline</span></div></div>
+    <div class="metric-card"><div class="label">Baselines with higher error, every interval above zero</div><div class="value">26<span class="unit">of 26</span></div></div>
+    <div class="metric-card accent-green"><div class="label">Without a laboratory reference</div><div class="value">0.174<span class="unit">9.5% below the strongest baseline</span></div></div>
+    <div class="metric-card"><div class="label">Tests from the NU/RILEM database</div><div class="value">4,026<span class="unit">239 laboratories</span></div></div>
+  </div>
+</div>
+
+<div class="section reveal" id="method">
+  <h2>Method</h2>
+  <figure class="architecture">
+    <img src="assets/fig03_framework.jpg" alt="Architecture of KITE for one creep test: the input feeds the experts and the in source transfer, whose trajectories and the input enter the evidence gate, which gives the predicted curve.">
+    <p class="caption">Architecture of KITE for one creep test after a short term test of 14 days.</p>
+  </figure>
+  <div class="module-list">
+    <p><strong>Knowledge experts.</strong> ACI 209R-92, fib Model Code 2010 and Model B4 updated on the short term data, with MC2010 and B4 calibrated on the control mixture.</p>
+    <p><strong>Analog expert.</strong> Attention over measured curves of other laboratories with similar short term kinetics.</p>
+    <p><strong>Foundation model expert.</strong> TabPFN v2, cross fitted by research team, so every prediction seen by the gate comes from other teams.</p>
+    <p><strong>M1. In source transfer.</strong> Attention over the curves of the control mixture, with a learned bias for the composition difference.</p>
+    <p><strong>M2. Evidence gate.</strong> Weights for every expert at every horizon, and a residual bounded by the disagreement of the experts.</p>
+  </div>
+</div>
+
+<div class="section reveal" id="results">
+  <h2>Results</h2>
+  <p class="lead">Relative RMSE over 196 query units, averaged over three partitions with folds grouped by research team. Every baseline lies above KITE, with a paired 95% bootstrap interval above zero and a Holm adjusted p value below 0.001. Click a header to sort.</p>
+  <div class="table-wrap">
+    <table data-sortable data-lower="1">
+      <thead><tr><th>Model, with a control mixture</th><th>Relative RMSE</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td>KITE (this work)</td><td data-v="0.147">0.147</td></tr>
+        <tr><td>TabPFN v2 with reference</td><td data-v="0.168">0.168</td></tr>
+        <tr><td>Random forest with reference</td><td data-v="0.178">0.178</td></tr>
+        <tr><td>Evidence average</td><td data-v="0.178">0.178</td></tr>
+        <tr><td>Laboratory analog</td><td data-v="0.185">0.185</td></tr>
+        <tr><td>Neural process with reference</td><td data-v="0.189">0.189</td></tr>
+        <tr><td>MC2010 updating</td><td data-v="0.250">0.250</td></tr>
+        <tr><td>B4 Bayesian updating</td><td data-v="0.281">0.281</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrap">
+    <table data-sortable data-lower="1">
+      <thead><tr><th>Variant</th><th>Error increase (%)</th></tr></thead>
+      <tbody>
+        <tr><td>Trained without the reference (first partition)</td><td data-v="13.1">13.1</td></tr>
+        <tr><td>Equal expert weights instead of the gate (M2)</td><td data-v="8.9">8.9</td></tr>
+        <tr><td>Without in source transfer (M1)</td><td data-v="6.7">6.7</td></tr>
+        <tr><td>Static gate weights (M2)</td><td data-v="5.6">5.6</td></tr>
+        <tr><td>Without the foundation model expert</td><td data-v="5.0">5.0</td></tr>
+        <tr><td>Without the bounded residual (M2)</td><td data-v="3.0">3.0</td></tr>
+        <tr><td>Without the analog expert (first partition)</td><td data-v="0.8">0.8</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-wrap">
+    <table data-sortable data-lower="1">
+      <thead><tr><th>Model, without a reference (268 units)</th><th>Relative RMSE</th></tr></thead>
+      <tbody>
+        <tr class="ours"><td>KITE (this work)</td><td data-v="0.174">0.174</td></tr>
+        <tr><td>Sequence only transformer</td><td data-v="0.192">0.192</td></tr>
+        <tr><td>TabPFN v2</td><td data-v="0.211">0.211</td></tr>
+        <tr><td>Analog nearest neighbors</td><td data-v="0.213">0.213</td></tr>
+        <tr><td>Random forest</td><td data-v="0.213">0.213</td></tr>
+        <tr><td>MC2010 updating</td><td data-v="0.236">0.236</td></tr>
+        <tr><td>B4 Bayesian updating</td><td data-v="0.261">0.261</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section wide reveal" id="explore">
+  <h2>Explore the predictions</h2>
+  <p class="lead">Drag the divider to compare the measured curve with the KITE prediction after 14 days. Examples sit at the 10th, 25th, 50th, 75th and 90th percentile of the KITE error.</p>
+  <div class="viewer" id="viewer">
+    <div class="viewer-bar">
+      <div class="frame-tabs" id="dtabs"></div>
+      <span class="viewer-spacer"></span>
+      <div class="frame-tabs" id="ftabs"></div>
+      <span class="viewer-spacer"></span>
+      <button class="tab play" id="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span id="playtxt">Alternate</span></button>
+    </div>
+    <div class="viewer-stage">
+      <div class="stage-frame" id="stage">
+        <img id="base" alt="measured curve">
+        <img id="top" class="top" alt="selected prediction">
+        <span class="stage-label left">Measured</span>
+        <span class="stage-label right" id="lab">KITE</span>
+        <div class="handle"><span class="handle-grip">&#9666;&#9656;</span></div>
+      </div>
+      <div class="stage-side">
+        <div class="thumbs" id="thumbs"></div>
+        <div class="stage-meta" id="meta"></div>
+      </div>
+    </div>
+    <div class="legend">
+      <span><i style="background:#1a1a1a"></i>filled: short term data, open: measured later</span>
+      <span><i style="background:#999999"></i>dashed: control mixture curves</span>
+      <span><i style="background:#D55E00"></i>line: KITE prediction</span>
+    </div>
+  </div>
+
+  <figure class="architecture" style="margin-top:2rem">
+    <img src="assets/fig04_comparison.jpg" loading="lazy" style="max-width:760px;display:block;margin:0 auto" alt="Error reduction by KITE relative to each baseline model with bootstrap intervals and the value of each partition">
+    <p class="caption">Error reduction by KITE relative to all 26 baselines.</p>
+  </figure>
+  <div class="fig-grid">
+    <figure class="architecture">
+      <img src="assets/fig05_family.jpg" loading="lazy" alt="Relative RMSE of seven models by the duration of the short term test with bootstrap intervals.">
+      <p class="caption">Error by duration of the short term test.</p>
+    </figure>
+    <figure class="architecture">
+      <img src="assets/fig08_horizon.jpg" loading="lazy" alt="Error reduction by KITE relative to six baseline models in three horizon bands, and the width and coverage of the prediction intervals of six models.">
+      <p class="caption">Error over the horizon and interval coverage.</p>
+    </figure>
+  </div>
+  <div class="fig-grid">
+    <figure class="architecture">
+      <img src="assets/fig07_units.jpg" loading="lazy" alt="Error reduction by KITE relative to B4 updating in each laboratory unit, sorted by deformation type, and cumulative distributions of the unit errors.">
+      <p class="caption">Error reduction by KITE in each laboratory unit.</p>
+    </figure>
+    <figure class="architecture">
+      <img src="assets/fig10_gate.jpg" loading="lazy" alt="Mean gate weights by evidence source over three horizon bands for two neural networks and the three deformation types.">
+      <p class="caption">Mean gate weights of two neural networks by evidence source.</p>
+    </figure>
+  </div>
+</div>
+
+<div class="section reveal" id="code">
+  <h2>Code</h2>
+  <div class="callout">Analysis code and trained models will be released in this repository on acceptance of the paper.</div>
+</div>
+
+<div class="section reveal" id="citation">
+  <h2>Citation</h2>
+  <div class="citation-block">@article{wakjira2026kite,<br>
+&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;= {Knowledge guided neural network with design code models and laboratory<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reference transfer for predicting long term creep and shrinkage of concrete<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from short term tests},<br>
+&nbsp;&nbsp;author&nbsp;&nbsp;= {Wakjira, Tadesse G. and Goshu, Hana L.},<br>
+&nbsp;&nbsp;journal&nbsp;= {Under Review},<br>
+&nbsp;&nbsp;year&nbsp;&nbsp;&nbsp;&nbsp;= {2026}<br>
+}</div>
+</div>
+
+<footer>
+  Developed by the <a href="https://www.ai4riselab.com" target="_blank" rel="noopener">AI4RISE Lab</a>
+</footer>
+
+</body>
+</html>

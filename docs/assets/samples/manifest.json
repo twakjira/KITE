@@ -1,0 +1,140 @@
+[
+ {
+  "tag": "drying",
+  "label": "Drying shrinkage",
+  "items": [
+   {
+    "label": "10th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.051
+    },
+    "measured": "assets/samples/drying_10_measured.jpg",
+    "kite": "assets/samples/drying_10_kite.jpg"
+   },
+   {
+    "label": "25th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.095
+    },
+    "measured": "assets/samples/drying_25_measured.jpg",
+    "kite": "assets/samples/drying_25_kite.jpg"
+   },
+   {
+    "label": "50th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.167
+    },
+    "measured": "assets/samples/drying_50_measured.jpg",
+    "kite": "assets/samples/drying_50_kite.jpg"
+   },
+   {
+    "label": "75th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.268
+    },
+    "measured": "assets/samples/drying_75_measured.jpg",
+    "kite": "assets/samples/drying_75_kite.jpg"
+   },
+   {
+    "label": "90th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.362
+    },
+    "measured": "assets/samples/drying_90_measured.jpg",
+    "kite": "assets/samples/drying_90_kite.jpg"
+   }
+  ]
+ },
+ {
+  "tag": "autogenous",
+  "label": "Autogenous shrinkage",
+  "items": [
+   {
+    "label": "10th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.039
+    },
+    "measured": "assets/samples/autogenous_10_measured.jpg",
+    "kite": "assets/samples/autogenous_10_kite.jpg"
+   },
+   {
+    "label": "25th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.096
+    },
+    "measured": "assets/samples/autogenous_25_measured.jpg",
+    "kite": "assets/samples/autogenous_25_kite.jpg"
+   },
+   {
+    "label": "50th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.168
+    },
+    "measured": "assets/samples/autogenous_50_measured.jpg",
+    "kite": "assets/samples/autogenous_50_kite.jpg"
+   },
+   {
+    "label": "75th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.305
+    },
+    "measured": "assets/samples/autogenous_75_measured.jpg",
+    "kite": "assets/samples/autogenous_75_kite.jpg"
+   },
+   {
+    "label": "90th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.584
+    },
+    "measured": "assets/samples/autogenous_90_measured.jpg",
+    "kite": "assets/samples/autogenous_90_kite.jpg"
+   }
+  ]
+ },
+ {
+  "tag": "creep",
+  "label": "Creep",
+  "items": [
+   {
+    "label": "10th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.02
+    },
+    "measured": "assets/samples/creep_10_measured.jpg",
+    "kite": "assets/samples/creep_10_kite.jpg"
+   },
+   {
+    "label": "25th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.032
+    },
+    "measured": "assets/samples/creep_25_measured.jpg",
+    "kite": "assets/samples/creep_25_kite.jpg"
+   },
+   {
+    "label": "50th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.058
+    },
+    "measured": "assets/samples/creep_50_measured.jpg",
+    "kite": "assets/samples/creep_50_kite.jpg"
+   },
+   {
+    "label": "75th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.117
+    },
+    "measured": "assets/samples/creep_75_measured.jpg",
+    "kite": "assets/samples/creep_75_kite.jpg"
+   },
+   {
+    "label": "90th percentile of the KITE error",
+    "rmse": {
+     "kite": 0.194
+    },
+    "measured": "assets/samples/creep_90_measured.jpg",
+    "kite": "assets/samples/creep_90_kite.jpg"
+   }
+  ]
+ }
+]
